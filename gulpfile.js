@@ -5,6 +5,7 @@ var uglify = require('gulp-uglify');
 var saveLicense = require('uglify-save-license');
 var autoprefixer = require('gulp-autoprefixer');
 var minifyCSS = require('gulp-minify-css');
+var deploy = require('gulp-gh-pages');
 
 gulp.task('default', ['build', 'assets']);
 
@@ -37,3 +38,8 @@ gulp.task('assets', function() {
     ])
     .pipe(gulp.dest('dist'));
 });
+
+gulp.task('deploy', ['default'], function() {
+  return gulp.src('dist/**/*')
+    .pipe(deploy('git@github.com:tatsuyaoiw/oimachi.git'));
+})
