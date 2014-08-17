@@ -34,6 +34,7 @@ gulp.task('build', function() {
 gulp.task('assets', function() {
   return gulp.src([
     'src/items.json',
+    'src/CNAME',
     'src/README.md'
     ])
     .pipe(gulp.dest('dist'));
